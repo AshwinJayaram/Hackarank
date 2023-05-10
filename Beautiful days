@@ -1,0 +1,75 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'beautifulDays' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER i
+#  2. INTEGER j
+#  3. INTEGER k
+#
+
+
+
+'''
+Lily likes to play games with integers. She has created a new game where she determines the difference between a number and its reverse
+She decides to apply her game to decision making. She will look at a numbered range of days and will only go to a movie on a beautiful day.
+If a day's value is a beautiful number, it is a beautiful day. Return the number of beautiful days in the range.
+
+a beautiful day is a number - its reverse / k ( a given number)
+
+
+
+'''
+
+def beautifulDays(z, x, k):
+    counter=0
+    diff=0
+    h=0
+    for i in range(z,x+1):
+        temp=str(i)
+        length=len(temp)
+        h=i
+        temp=''
+        div=0
+        for j in range(length):
+            div=i%10
+            i//=10
+            if div!=0:
+                temp+=str(div)
+        diff=abs(h-int(temp))
+        if diff%k==0:
+            counter+=1
+    return counter
+
+
+
+
+    
+
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    first_multiple_input = input().rstrip().split()
+
+    i = int(first_multiple_input[0])
+
+    j = int(first_multiple_input[1])
+
+    k = int(first_multiple_input[2])
+
+    result = beautifulDays(i, j, k)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
